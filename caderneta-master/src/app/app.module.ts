@@ -6,7 +6,9 @@ import{HttpModule} from '@angular/http';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
-import { ViagemPage} from '../pages/viagem/viagem'
+import { ViagemPage} from '../pages/viagem/viagem';
+import {CadastroAnotacaoPage} from '../pages/cadastro-anotacao/cadastro-anotacao';
+import {AnotacaoPage} from '../pages/anotacao/anotacao'
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -22,7 +24,9 @@ import { AddPage } from '../pages/add/add';
     CadastroViagemPage,
     ViagemPage,
     ChecklistPage,
-    AddPage
+    AddPage,
+    CadastroAnotacaoPage,
+    AnotacaoPage
   ],
   imports: [
     BrowserModule,
@@ -37,7 +41,9 @@ import { AddPage } from '../pages/add/add';
     CadastroViagemPage,
     ViagemPage,
     ChecklistPage,
-    AddPage
+    AddPage,
+    CadastroAnotacaoPage,
+    AnotacaoPage
   ],
   providers: [
     StatusBar,

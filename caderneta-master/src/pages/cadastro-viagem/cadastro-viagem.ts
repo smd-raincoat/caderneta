@@ -21,7 +21,8 @@ export class CadastroViagemPage {
     cidade:"",
     partida:"",
     retorno:"",
-    observacoes:""
+    observacoes:"",
+    anotacoes:[]
   }
 
   public viagens: any;
@@ -34,7 +35,8 @@ export class CadastroViagemPage {
       cidade:'',
       partida:'',
       retorno:'',
-      observacoes:''
+      observacoes:'',
+      anotacoes:[]
     }
     this.viagens = localStorage.getItem('viagens');
     

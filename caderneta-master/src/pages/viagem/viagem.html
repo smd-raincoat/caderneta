@@ -18,6 +18,14 @@
   <ion-label>{{viagem.retorno}}</ion-label>
   <ion-label>Observações:</ion-label>
   <ion-label>{{viagem.observacoes}}</ion-label>
+
+  <div padding>
+    <button ion-button block (click)="goCadastroAnotacaoPage()">Criar anotação</button>
+  </div>
+
+  <div padding *ngFor = "let anotacao of anotacoes; let i = index">
+      <button ion-button block (click)="goAnotacaoPage(i)" >Anotacao {{ i + 1}}</button>
+  </div>
   
 
 </ion-content>

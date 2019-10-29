@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import{CadastroAnotacaoPage} from '../cadastro-anotacao/cadastro-anotacao';
+import{AnotacaoPage} from '../anotacao/anotacao';
 
 @IonicPage()
 @Component({
@@ -11,6 +13,7 @@ export class ViagemPage {
   public viagens:any;
   public viagem:any;
   public indexViagem:any;
+  public anotacoes:any;
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
@@ -21,13 +24,22 @@ export class ViagemPage {
     console.log(this.indexViagem);
     this.viagem = this.viagens[this.indexViagem];
     console.log(this.viagens);
+    this.anotacoes = this.viagens[this.indexViagem].anotacoes;
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ViagemPage');
     console.log(this.viagem); 
   }
-  //public data:any = dataProvider.getData;
+  
+  goCadastroAnotacaoPage(){
+    this.navCtrl.push(CadastroAnotacaoPage);
+  }
+
+  goAnotacaoPage(i):void {
+    localStorage.setItem("indexAnotacao",i);
+    this.navCtrl.push(AnotacaoPage);
+  }
 
 
 }
