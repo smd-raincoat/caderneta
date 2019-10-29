@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>PÁGINA INICIAL</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div padding>
+    <button ion-button block (click)="goCadastroViagemPage()">Criar Viagem</button>
+  </div>
+
+  <div padding *ngFor = "let viagem of viagens; let i = index">
+      <button ion-button block (click)="goViagemPage(i)">{{viagem.titulo}}</button>
+  </div>
+</ion-content>
