@@ -36,7 +36,7 @@
 
       <ion-item>
         <ion-label floating>Observações</ion-label>
-        <ion-input type="text" [(ngModel)]="cadastroForm.observacoes" name="observacoes"></ion-input>
+        <ion-textarea rows = "5" cols = "20" type="text" [(ngModel)]="cadastroForm.observacoes" name="observacoes"></ion-textarea>
       </ion-item>
       <button ion-button block type="submit" (click) = "goHome()">Seguir</button>
     

@@ -15,12 +15,12 @@
       
         <ion-item>
           <ion-label floating>Data</ion-label>
-          <ion-input type="text" [(ngModel)]="cadastroForm.data" name="data"></ion-input>
+          <ion-datetime displayFormat = "DD MMM YYYY" [(ngModel)]="cadastroForm.data" name="data"></ion-datetime>
         </ion-item>
   
         <ion-item>
           <ion-label floating>Hora</ion-label>
-          <ion-input type="text" [(ngModel)]="cadastroForm.hora" name="hora"></ion-input>
+          <ion-datetime displayFormat="h:mm A" pickerFormat = "h mm a" [(ngModel)]="cadastroForm.hora" name="hora"></ion-datetime>
         </ion-item>
   
         <ion-item>
@@ -30,7 +30,7 @@
   
         <ion-item>
           <ion-label floating>Texto</ion-label>
-          <ion-input type="text" [(ngModel)]="cadastroForm.texto" name="texto"></ion-input>
+          <ion-textarea rows = "10" cols = "20" [(ngModel)]="cadastroForm.texto" name="texto"></ion-textarea>
         </ion-item>
   
         <button ion-button block type="submit" (click) = "goViagem()">Seguir</button>

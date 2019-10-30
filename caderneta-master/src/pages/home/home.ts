@@ -3,16 +3,13 @@ import { NavController,NavParams, IonicPage } from 'ionic-angular';
 import { CadastroViagemPage } from '../cadastro-viagem/cadastro-viagem';
 import { ViagemPage} from '../viagem/viagem';
 
-@IonicPage()
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
   public viagens = JSON.parse(localStorage.getItem("viagens"));
-  constructor(public navCtrl: NavController,public navParams: NavParams) {
-    
-    
+  constructor(public navCtrl: NavController,public navParams: NavParams) {  
   }
   
   ionViewWillEnter() {

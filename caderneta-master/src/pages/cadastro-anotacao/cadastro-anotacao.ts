@@ -19,7 +19,6 @@ export class CadastroAnotacaoPage {
   [x: string]: any;
   
   public cadastroForm = {
-    localizacao:"",
     data:"",
     hora:"",
     coordenadas:"",
@@ -32,7 +31,6 @@ export class CadastroAnotacaoPage {
   
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.cadastroForm = {
-      localizacao:"",
       data:"",
       hora:"",
       coordenadas:"",

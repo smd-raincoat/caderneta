@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { AlertController } from 'ionic-angular';
+import {ViagemPage} from '../viagem/viagem';
 
 /**
  * Generated class for the AnotacaoPage page.
@@ -22,7 +24,7 @@ export class AnotacaoPage {
   public indexAnotacao:any;
   public anotacao:any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,private alertCtrl: AlertController) {
     this.viagens = localStorage.getItem('viagens');
     this.viagens = JSON.parse(this.viagens);
     this.indexViagem = localStorage.getItem('indexViagem');
@@ -36,6 +38,32 @@ export class AnotacaoPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AnotacaoPage');
+  }
+
+  apagarAnotacao(){
+    let alert = this.alertCtrl.create({
+      title: 'Apagar Anotação!',
+      message: 'Você deseja mesmo apagar essa anotação?',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Apagar',
+          handler: () => {
+            this.viagens[this.indexViagem].anotacoes.splice('indexAnotacao',1);
+            localStorage.setItem("viagens", JSON.stringify(this.viagens));
+            this.navCtrl.push(ViagemPage);
+          }
+        }
+      ]
+    });
+    alert.present();
+    
   }
 
 }

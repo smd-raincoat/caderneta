@@ -6,13 +6,15 @@
 -->
 <ion-header>
   <ion-navbar>
-    <ion-title>anotacao</ion-title>
+    <ion-title>Anotação</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-    <ion-label>Localização:</ion-label>
-    <ion-label>{{anotacao.localizacao}}</ion-label>
+
+    <div padding>
+        <button ion-button block (click) = "apagarAnotacao()">Apagar anotação</button>
+    </div>
     <ion-label>Data:</ion-label>
     <ion-label>{{anotacao.data}}</ion-label>
     <ion-label>Hora:</ion-label>
