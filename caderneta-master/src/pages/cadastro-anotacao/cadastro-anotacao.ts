@@ -42,16 +42,14 @@ export class CadastroAnotacaoPage {
     this.viagens = localStorage.getItem('viagens');
     
   }
-  setData(localizacao: string,data: string, hora: string, coordenadas: string, texto: string){
+  setData(data: string, hora: string, coordenadas: string, texto: string){
     let cadastroForm = {
-      localizacao:"",
       data:"",
       hora:"",
       coordenadas:"",
       texto:"",
       imagem:"",
     } 
-    cadastroForm.localizacao = localizacao;
     cadastroForm.data = data;
     cadastroForm.hora = hora;
     cadastroForm.coordenadas = coordenadas;

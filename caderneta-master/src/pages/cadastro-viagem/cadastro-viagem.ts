@@ -38,7 +38,7 @@ export class CadastroViagemPage {
       observacoes:'',
       anotacoes:[]
     }
-    this.viagens = localStorage.getItem('viagens');
+    this.viagens = localStorage.getItem('listaViagens');
     
   }
   setData(titulo: string,data: string, cidade: string, partida: string, retorno: string, observacoes: string){

@@ -12,11 +12,6 @@
 
 <ion-content padding>
     <form (ngSubmit)="logForm()">
-  
-        <ion-item>
-          <ion-label floating>Localização</ion-label>
-          <ion-input type="text"  [(ngModel)]="cadastroForm.titulo"  name="localizacao"></ion-input>
-        </ion-item>
       
         <ion-item>
           <ion-label floating>Data</ion-label>
@@ -25,17 +20,17 @@
   
         <ion-item>
           <ion-label floating>Hora</ion-label>
-          <ion-input type="text" [(ngModel)]="cadastroForm.cidade" name="hora"></ion-input>
+          <ion-input type="text" [(ngModel)]="cadastroForm.hora" name="hora"></ion-input>
         </ion-item>
   
         <ion-item>
           <ion-label floating>Coordenadas</ion-label>
-          <ion-input type="text" [(ngModel)]="cadastroForm.partida" name="coordenadas"></ion-input>
+          <ion-input type="text" [(ngModel)]="cadastroForm.coordendas" name="coordenadas"></ion-input>
         </ion-item>
   
         <ion-item>
           <ion-label floating>Texto</ion-label>
-          <ion-input type="text" [(ngModel)]="cadastroForm.retorno" name="texto"></ion-input>
+          <ion-input type="text" [(ngModel)]="cadastroForm.texto" name="texto"></ion-input>
         </ion-item>
   
         <button ion-button block type="submit" (click) = "goViagem()">Seguir</button>

@@ -3,13 +3,6 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AddPage } from '../add/add';
 
 
-/**
- * Generated class for the ChecklistPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @IonicPage()
 @Component({
   selector: 'page-checklist',
@@ -33,7 +26,7 @@ export class ChecklistPage {
   ionViewWillEnter() {
     this.todoList = JSON.parse(localStorage.getItem("todos"));
     if(!this.todoList) {
-        this.todoList = ['GPS'];
+        this.todoList = [''];
     }
 }
   delete(index: number) {

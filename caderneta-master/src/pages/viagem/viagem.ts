@@ -27,6 +27,11 @@ export class ViagemPage {
     this.anotacoes = this.viagens[this.indexViagem].anotacoes;
   }
 
+  ionViewWillEnter() {
+    this.viagens = JSON.parse(localStorage.getItem("viagens"));
+    this.anotacoes = this.viagens[this.indexViagem].anotacoes;
+  }
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad ViagemPage');
     console.log(this.viagem); 
