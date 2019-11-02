@@ -16,7 +16,7 @@
     
       <ion-item>
         <ion-label floating>Data</ion-label>
-        <ion-input type="text" [(ngModel)]="cadastroForm.data" name="data"></ion-input>
+        <ion-datetime displayFormat = "DD MMM YYYY" [(ngModel)]="cadastroForm.data" name="data"></ion-datetime>
       </ion-item>
 
       <ion-item>
@@ -25,13 +25,23 @@
       </ion-item>
 
       <ion-item>
-        <ion-label floating>Partida</ion-label>
-        <ion-input type="text" [(ngModel)]="cadastroForm.partida" name="partida"></ion-input>
+        <ion-label floating>Data de partida</ion-label>
+        <ion-datetime displayFormat = "DD MMM YYYY" [(ngModel)]="cadastroForm.partidaData" name="partidaData"></ion-datetime>
       </ion-item>
 
       <ion-item>
-        <ion-label floating>Retorno</ion-label>
-        <ion-input type="text" [(ngModel)]="cadastroForm.retorno" name="retorno"></ion-input>
+        <ion-label floating>Hora de partida</ion-label>
+        <ion-datetime displayFormat="h:mm A" [(ngModel)]="cadastroForm.partidaHora" name="partidaHora"></ion-datetime>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Data de retorno</ion-label>
+        <ion-datetime displayFormat = "DD MMM YYYY" [(ngModel)]="cadastroForm.retornoData" name="retornoData"></ion-datetime>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Hora de retorno</ion-label>
+        <ion-datetime displayFormat="h:mm A" [(ngModel)]="cadastroForm.retornoHora" name="retornoHora"></ion-datetime>
       </ion-item>
 
       <ion-item>

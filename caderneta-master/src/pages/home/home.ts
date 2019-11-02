@@ -8,14 +8,14 @@ import { ViagemPage} from '../viagem/viagem';
   templateUrl: 'home.html'
 })
 export class HomePage {
-  public viagens = JSON.parse(localStorage.getItem("viagens"));
+  public viagens;
   constructor(public navCtrl: NavController,public navParams: NavParams) {  
   }
   
   ionViewWillEnter() {
     this.viagens = JSON.parse(localStorage.getItem("viagens"));
-    if(!this.viagens) {
-      this.viagens = [''];
+    if(this.viagens == null) {
+      this.viagens = [];
     }
   }
   

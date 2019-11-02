@@ -38,23 +38,26 @@ export class CadastroViagemPage {
       observacoes:'',
       anotacoes:[]
     }
-    this.viagens = localStorage.getItem('listaViagens');
     
   }
-  setData(titulo: string,data: string, cidade: string, partida: string, retorno: string, observacoes: string){
+  setData(titulo: string,data: string, cidade: string, partidaData: string,partidaHora:string, retornoData: string,retornoHora: string, observacoes: string){
     let cadastroForm = {
       titulo: '',
       data:'',
       cidade:'',
-      partida:'',
-      retorno:'',
+      partidaData:'',
+      partidaHora:'',
+      retornoData:'',
+      retornoHora:'',
       observacoes:''
     } 
     cadastroForm.titulo = titulo;
     cadastroForm.data = data;
     cadastroForm.cidade = cidade;
-    cadastroForm.partida = partida;
-    cadastroForm.retorno = retorno;
+    cadastroForm.partidaData = partidaData;
+    cadastroForm.partidaHora = partidaHora;
+    cadastroForm.retornoData = retornoData;
+    cadastroForm.retornoHora = retornoHora;
     cadastroForm.observacoes = observacoes;
 
   }
