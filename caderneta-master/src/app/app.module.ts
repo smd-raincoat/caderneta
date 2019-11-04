@@ -15,6 +15,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import {CadastroViagemPage} from '../pages/cadastro-viagem/cadastro-viagem';
 import { ChecklistPage } from '../pages/checklist/checklist';
 import { AddPage } from '../pages/add/add';
+import {IonicStorageModule} from '@ionic/storage';
+import { DatePipe } from '@angular/common';
+import { dataProvider } from '../providers/data/data';
 
 @NgModule({
   declarations: [
@@ -31,7 +34,11 @@ import { AddPage } from '../pages/add/add';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    HttpModule
+    HttpModule,
+    IonicStorageModule.forRoot({
+      name: '__mydb',
+         driverOrder: ['indexeddb', 'sqlite', 'websql']
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -48,7 +55,9 @@ import { AddPage } from '../pages/add/add';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    DatePipe,
+    dataProvider
   ]
 })
 export class AppModule {}

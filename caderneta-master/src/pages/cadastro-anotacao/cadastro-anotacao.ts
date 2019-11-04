@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,ToastController } from 'ionic-angular';
+import {dataProvider, viagem, anotacao} from "../../providers/data/data";
 import {ViagemPage} from '../viagem/viagem';
 
 /**
@@ -29,7 +30,7 @@ export class CadastroAnotacaoPage {
   public viagens: any;
   
   
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,private data: dataProvider, private toast: ToastController) {
     this.cadastroForm = {
       data:"",
       hora:"",
@@ -55,10 +56,7 @@ export class CadastroAnotacaoPage {
 
   }
   logForm(){
-    this.viagens = localStorage.getItem('viagens');
-    this.viagens = JSON.parse(this.viagens);
-    this.viagens[localStorage.getItem("indexViagem")].anotacoes.push(this.cadastroForm);
-    localStorage.setItem("viagens",JSON.stringify(this.viagens));
+    
   }
   getData(){
     return localStorage.getItem("viagens");

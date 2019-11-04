@@ -11,44 +11,44 @@
   
       <ion-item>
         <ion-label floating>Título</ion-label>
-        <ion-input type="text"  [(ngModel)]="cadastroForm.titulo"  name="titulo"></ion-input>
+        <ion-input type="text"  [(ngModel)]="model.titulo"  name="titulo"></ion-input>
       </ion-item>
     
       <ion-item>
         <ion-label floating>Data</ion-label>
-        <ion-datetime displayFormat = "DD MMM YYYY" [(ngModel)]="cadastroForm.data" name="data"></ion-datetime>
+        <ion-datetime displayFormat = "DD MMM YYYY" [(ngModel)]="model.data" name="data"></ion-datetime>
       </ion-item>
 
       <ion-item>
         <ion-label floating>Cidade</ion-label>
-        <ion-input type="text" [(ngModel)]="cadastroForm.cidade" name="cidade"></ion-input>
+        <ion-input type="text" [(ngModel)]="model.cidade" name="cidade"></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label floating>Data de partida</ion-label>
-        <ion-datetime displayFormat = "DD MMM YYYY" [(ngModel)]="cadastroForm.partidaData" name="partidaData"></ion-datetime>
+        <ion-datetime displayFormat = "DD MMM YYYY" [(ngModel)]="model.partidaData" name="partidaData"></ion-datetime>
       </ion-item>
 
       <ion-item>
         <ion-label floating>Hora de partida</ion-label>
-        <ion-datetime displayFormat="h:mm A" [(ngModel)]="cadastroForm.partidaHora" name="partidaHora"></ion-datetime>
+        <ion-datetime displayFormat="h:mm A" [(ngModel)]="model.partidaHora" name="partidaHora"></ion-datetime>
       </ion-item>
 
       <ion-item>
         <ion-label floating>Data de retorno</ion-label>
-        <ion-datetime displayFormat = "DD MMM YYYY" [(ngModel)]="cadastroForm.retornoData" name="retornoData"></ion-datetime>
+        <ion-datetime displayFormat = "DD MMM YYYY" [(ngModel)]="model.retornoData" name="retornoData"></ion-datetime>
       </ion-item>
 
       <ion-item>
         <ion-label floating>Hora de retorno</ion-label>
-        <ion-datetime displayFormat="h:mm A" [(ngModel)]="cadastroForm.retornoHora" name="retornoHora"></ion-datetime>
+        <ion-datetime displayFormat="h:mm A" [(ngModel)]="model.retornoHora" name="retornoHora"></ion-datetime>
       </ion-item>
 
       <ion-item>
         <ion-label floating>Observações</ion-label>
-        <ion-textarea rows = "5" cols = "20" type="text" [(ngModel)]="cadastroForm.observacoes" name="observacoes"></ion-textarea>
+        <ion-textarea rows = "5" cols = "20" type="text" [(ngModel)]="model.observacoes" name="observacoes"></ion-textarea>
       </ion-item>
-      <button ion-button block type="submit" (click) = "goHome()">Seguir</button>
+      <button ion-button block (click) = "save()">Seguir</button>
     
     </form>
     

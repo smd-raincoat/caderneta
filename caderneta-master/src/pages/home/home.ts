@@ -1,36 +1,38 @@
 import { Component } from '@angular/core';
-import { NavController,NavParams, IonicPage } from 'ionic-angular';
+import { NavController,NavParams, IonicPage,ToastController } from 'ionic-angular';
 import { CadastroViagemPage } from '../cadastro-viagem/cadastro-viagem';
-import { ViagemPage} from '../viagem/viagem';
+import { dataProvider, viagem, viagensList} from '../../providers/data/data';
+import { ViagemPage } from '../viagem/viagem';
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
-  public viagens;
-  constructor(public navCtrl: NavController,public navParams: NavParams) {  
+  public viagens:viagensList[];
+  constructor(public navCtrl: NavController,public navParams: NavParams,private data: dataProvider, private toast: ToastController) {  
   }
   
   ionViewWillEnter() {
-    this.viagens = JSON.parse(localStorage.getItem("viagens"));
-    if(this.viagens == null) {
-      this.viagens = [];
-    }
+    this.data.getAll()
+      .then((result) => {
+        this.viagens = result;
+      });
+    //console.log(this.viagens);
   }
   
   goCadastroViagemPage():void {
     this.navCtrl.push(CadastroViagemPage);
   }
 
-  goViagemPage(i):void {
-    localStorage.setItem("indexViagem",i);
-    this.navCtrl.push(ViagemPage);
+  goViagemPage(item: viagensList){
+    this.navCtrl.push(ViagemPage, { key: item.key, viagem: item.viagem });
+    console.log(item);
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad HomePage');
-    console.log(this.viagens);
+    //console.log('ionViewDidLoad HomePage');
+    //console.log(this.viagens);
   }
 
 }

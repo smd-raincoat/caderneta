@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,ToastController } from 'ionic-angular';
 import { Validators, FormBuilder, FormGroup} from '@angular/forms'
-import {dataProvider} from "../../providers/data/data";
+import {dataProvider, viagem} from "../../providers/data/data";
 import {HomePage} from '../home/home'
 
 
@@ -28,7 +28,9 @@ export class CadastroViagemPage {
   public viagens: any;
   
   
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,private data: dataProvider, private toast: ToastController) {
+    this.model = new viagem();
+    
     this.cadastroForm = {
       titulo: '',
       data:'',
@@ -63,25 +65,33 @@ export class CadastroViagemPage {
   }
   logForm(){
     console.log(this.cadastroForm);
-    console.log(this.viagens);
-    this.viagens = localStorage.getItem('viagens');
-    console.log(this.viagens);
-    this.viagens = JSON.parse(this.viagens);
-    this.viagens.push(this.cadastroForm)
-    console.log(this.viagens);
-    localStorage.setItem("viagens",JSON.stringify(this.viagens));
   }
   getData(){
     return localStorage.getItem("viagens");
   }
 
+  save() {
+    this.saveViagem()
+      .then(() => {
+        this.toast.create({ message: 'Viagem Salva.', duration: 3000, position: 'botton' }).present();
+        this.navCtrl.pop();
+      })
+      .catch(() => {
+        this.toast.create({ message: 'Erro ao salvar viagem.', duration: 3000, position: 'botton' }).present();
+      });
+  }
+ 
+  private saveViagem() {
+    if (this.key) {
+      return this.data.update(this.key, this.model);
+    } else {
+      return this.data.insert(this.model);
+    }
+  }
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad CadastroViagemPage');
     
-  }
-
-  goHome(){
-    this.navCtrl.push(HomePage);
   }
 
 }

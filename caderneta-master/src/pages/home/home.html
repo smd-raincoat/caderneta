@@ -13,6 +13,6 @@
   </div>
 
   <div padding *ngFor = "let viagem of viagens; let i = index">
-      <button ion-button block (click)="goViagemPage(i)">{{viagem.titulo}}</button>
+      <button ion-button block (click)="goViagemPage(viagem)">{{viagem.viagem.titulo}}</button>
   </div>
 </ion-content>
