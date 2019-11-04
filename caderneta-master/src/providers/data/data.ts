@@ -40,6 +40,41 @@ export class dataProvider {
         return Promise.reject(error);
       });
   }
+
+  public insertAnotacao(anotacao: anotacao) {
+    let key = this.datepipe.transform(new Date(), "ddMMyyyyHHmmss");
+    return this.saveAnotacao(key, anotacao);
+  }
+ 
+  public updateAnotacao(key: string, anotacao: anotacao) {
+    return this.saveAnotacao(key, anotacao);
+  }
+ 
+  private saveAnotacao(key: string, anotacao: anotacao) {
+    return this.storage.set(key, anotacao);
+  }
+ 
+  public removeAnotacao(key: string) {
+    return this.storage.remove(key);
+  }
+ 
+  public getAllAnotacao() {
+ 
+    let anotacoes: anotacaoList[] = [];
+ 
+    return this.storage.forEach((value: anotacao, key: string, iterationNumber: Number) => {
+      let anotacao = new anotacaoList();
+      anotacao.key = key;
+      anotacao.anotacao = value;
+      anotacoes.push(anotacao);
+    })
+      .then(() => {
+        return Promise.resolve(anotacoes);
+      })
+      .catch((error) => {
+        return Promise.reject(error);
+      });
+  }
 }
 
 export class viagem {

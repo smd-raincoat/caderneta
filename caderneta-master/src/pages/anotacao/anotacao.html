@@ -13,14 +13,14 @@
 <ion-content padding>
 
     <div padding>
-        <button ion-button block (click) = "apagarAnotacao()">Apagar anotação</button>
+        <button ion-button block (click) = "apagarAnotacao(key)">Apagar anotação</button>
     </div>
     <ion-label><b>Data:</b></ion-label>
-    <ion-label>{{anotacao.data}}</ion-label>
+    <ion-label>{{model?.data}}</ion-label>
     <ion-label><b>Hora:</b></ion-label>
-    <ion-label>{{anotacao.hora}}</ion-label>
+    <ion-label>{{model?.hora}}</ion-label>
     <ion-label><b>Coordenadas:</b></ion-label>
-    <ion-label>{{anotacao.coordenada}}</ion-label>
+    <ion-label>{{model?.coordenadas}}</ion-label>
     <ion-label><b>Texto:</b></ion-label>
-    <ion-label>{{anotacao.texto}}</ion-label>
+    <ion-label>{{model?.texto}}</ion-label>
 </ion-content>

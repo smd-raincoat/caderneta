@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
+import { Component } from '@angular/core'; 
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import{CadastroAnotacaoPage} from '../cadastro-anotacao/cadastro-anotacao';
 import{AnotacaoPage} from '../anotacao/anotacao';
 import { AlertController } from 'ionic-angular';
 import { HomePage } from '../home/home';
-import {dataProvider, viagem, viagensList} from '../../providers/data/data';
+import {dataProvider, viagem, viagensList, anotacaoList} from '../../providers/data/data';
 
 @IonicPage()
 @Component({
@@ -12,7 +12,7 @@ import {dataProvider, viagem, viagensList} from '../../providers/data/data';
   templateUrl: 'viagem.html',
 })
 export class ViagemPage {
-
+  public anotacoes:anotacaoList[];
   model:viagem;
   key:string;
 
@@ -26,6 +26,11 @@ export class ViagemPage {
     this.model = this.navParams.data.viagem;
     this.key =  this.navParams.data.key;
     console.log(this.model);
+    this.data.getAllAnotacao()
+      .then((result) => {
+        this.anotacoes = result;
+      });
+    console.log(this.anotacoes);
   }
 
   ionViewDidLoad() {
@@ -37,9 +42,8 @@ export class ViagemPage {
     this.navCtrl.push(CadastroAnotacaoPage);
   }
 
-  goAnotacaoPage(i):void {
-    localStorage.setItem("indexAnotacao",i);
-    this.navCtrl.push(AnotacaoPage);
+  goAnotacaoPage(item:anotacaoList):void {
+    this.navCtrl.push(AnotacaoPage,{key: item.key, viagem: item.anotacao});
   }
 
   apagarViagem(k:string){

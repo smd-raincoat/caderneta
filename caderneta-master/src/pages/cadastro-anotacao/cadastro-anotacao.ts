@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component } from '@angular/core'; 
 import { IonicPage, NavController, NavParams,ToastController } from 'ionic-angular';
 import {dataProvider, viagem, anotacao} from "../../providers/data/data";
 import {ViagemPage} from '../viagem/viagem';
@@ -38,7 +38,7 @@ export class CadastroAnotacaoPage {
       texto:"",
       imagem:"",
     }
-    this.viagens = localStorage.getItem('viagens');
+    this.model = new anotacao();
     
   }
   setData(data: string, hora: string, coordenadas: string, texto: string){
@@ -68,6 +68,25 @@ export class CadastroAnotacaoPage {
 
   goViagem(){
     this.navCtrl.push(ViagemPage);
+  }
+
+  save() {
+    this.saveAnotacao()
+      .then(() => {
+        this.toast.create({ message: 'Anotacao Salva.', duration: 3000, position: 'botton' }).present();
+        this.navCtrl.pop();
+      })
+      .catch(() => {
+        this.toast.create({ message: 'Erro ao salvar anotacao.', duration: 3000, position: 'botton' }).present();
+      });
+  }
+ 
+  private saveAnotacao() {
+    if (this.key) {
+      return this.data.updateAnotacao(this.key, this.model);
+    } else {
+      return this.data.insertAnotacao(this.model);
+    }
   }
 
 }

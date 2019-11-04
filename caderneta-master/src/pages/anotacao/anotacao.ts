@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
 import {ViagemPage} from '../viagem/viagem';
+import { anotacao, dataProvider } from '../../providers/data/data';
 
 /**
  * Generated class for the AnotacaoPage page.
@@ -23,24 +24,23 @@ export class AnotacaoPage {
   public indexViagem:any;
   public indexAnotacao:any;
   public anotacao:any;
+  model:anotacao;
+  key:string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,private alertCtrl: AlertController) {
-    this.viagens = localStorage.getItem('viagens');
-    this.viagens = JSON.parse(this.viagens);
-    this.indexViagem = localStorage.getItem('indexViagem');
-    this.indexAnotacao = localStorage.getItem('indexAnotacao');
-    console.log(this.indexViagem);
-    this.viagem = this.viagens[this.indexViagem];
-    console.log(this.viagens);
-    this.anotacao = this.viagens[this.indexViagem].anotacoes[this.indexAnotacao];
-    console.log(this.anotacao);
+  constructor(public navCtrl: NavController, public navParams: NavParams,private alertCtrl: AlertController,private data: dataProvider) {
+    
+  }
+  ionViewWillEnter() {
+    this.model = this.navParams.data.anotacao;
+    this.key =  this.navParams.data.key;
+    console.log(this.navParams.data.anotacao);
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AnotacaoPage');
   }
 
-  apagarAnotacao(){
+  apagarAnotacao(k:string){
     let alert = this.alertCtrl.create({
       title: 'Apagar Anotação!',
       message: 'Você deseja mesmo apagar essa anotação?',
@@ -55,15 +55,17 @@ export class AnotacaoPage {
         {
           text: 'Apagar',
           handler: () => {
-            this.viagens[this.indexViagem].anotacoes.splice('indexAnotacao',1);
-            localStorage.setItem("viagens", JSON.stringify(this.viagens));
-            this.navCtrl.push(ViagemPage);
+            this.removeContact(k);
+            this.navCtrl.pop();
           }
         }
       ]
     });
     alert.present();
     
+  }
+  removeContact(key: string) {
+    this.data.removeAnotacao(key);
   }
 
 }
